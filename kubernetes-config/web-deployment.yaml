@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ labels:
+   app: web-api
+ name: web-api
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: web-api
+     ver: v1.0
+ template:
+   metadata:
+     labels:
+       app: web-api
+       ver: v1.0
+   spec:
+     containers:
+     - image: txmanlab/events-website-k8s:v1.0
+       name: web-api
+       ports:
+       - containerPort: 8080
